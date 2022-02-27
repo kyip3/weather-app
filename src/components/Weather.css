@@ -1,0 +1,22 @@
+.weather {
+    display: flex;
+    justify-content: center;
+    width: 25rem;
+    margin: 5rem auto;
+    background-color: rgba(255, 255, 255, 0.164);
+    color: white;
+    border-radius: 10px;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));}
+
+.weather-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.weather-title label {
+    padding: 1rem;
+    font-size: 40px;
+}
