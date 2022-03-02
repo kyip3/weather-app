@@ -14,14 +14,14 @@ const CurrentTemp = () => {
     async function getRealTimeReading() {
         const response = await fetch("https://api.data.gov.sg/v1/environment/air-temperature");
         const result = await response.json();
-
+        console.log("getRealTimeReading" , result);
         const data = result.items[0].readings[5];
         setCurrentTemp(data.value);
     }
     async function get24hourForecast() {
         const response = await fetch("https://api.data.gov.sg/v1/environment/24-hour-weather-forecast");
         const result = await response.json();
-        //console.log(result);
+        console.log("get24hourForecast" , result);
         const data = result.items[0];
         const forecastData = {
             id: Math.random().toString(),
