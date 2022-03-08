@@ -17,14 +17,16 @@ const DailyWeather = () => {
     function convertToDisplayForecast(currentForecast) {
         if (currentForecast.includes('showers'))
             return 'Raining';
-        if (currentForecast.includes('cloudy'))
+        else if (currentForecast.includes('cloudy'))
             return 'Cloudy';
+        else
+            return currentForecast;
     }
     async function fetchNext4DayForecast() {
         const response = await fetch('https://api.data.gov.sg/v1/environment/4-day-weather-forecast');
         const result = await response.json();
-
-
+        console.log("next 4 days",result);
+        
         const transformResult = result.items[0].forecasts.map(data => {
 
             return {
@@ -46,7 +48,8 @@ const DailyWeather = () => {
 
     return (
         <div className='daily-weather-main'>
-            <h2>Next 4 days</h2>
+            <div>Next 4 days</div>
+            <div className='weather-main__break'></div>
 
             {dailyResult.map(data => (
                 <div key={data.id} className='daily-weather-list'>
@@ -55,7 +58,7 @@ const DailyWeather = () => {
                         <div>{data.forecast}</div>
                         <div className='daily-weather-list__temp'>
                             <div className='daily-weather-list__temp_high'>{data.temperature_high}</div>
-                            <div className='daily-weather-list__temp_low'>{data.temperature_high}</div>
+                            <div className='daily-weather-list__temp_low'>{data.temperature_low}</div>
                         </div>
                     </div>
                 </div>
